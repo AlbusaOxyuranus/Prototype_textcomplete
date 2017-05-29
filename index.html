@@ -24,7 +24,7 @@
             };
     function shortKey(key,value){
         var self =this;
-        self.key=ke;
+        self.key=key;
         self.value=value;
     }
 
@@ -37,12 +37,35 @@
         match: /\B:([\-+\w]*)$/,
         search:  function (term, callback) {
         console.log('fff');
-        callback($.map(dict,function(key, index) {
-            console.log(dict[index]);
-            console.log(dict);
-            Object.keys(driversCounter)
+        callback(
+            $.grep(arrays, function(el){ 
+                console.log(el.key);
+                console.log(term);
+               return el.key.indexOf(term) === 0 ? el : null
+                // if(term==null)
+                // {
+                //     return el.key;
+                // }
+                // else{
+                //        return el.key===tern;
+                //     }
+               
+                // return e.key==term;
+            // $.map(shortKey, function (word,index) {
+            // //return shortKey.
+            // console.log(shortKey[index]);
+            // console.log(shortKey.indexOf(word).key);
+            // console.log(word.key);
+            // return shortKey.indexOf(word) === term ? word : null;
+        }));
+        },
+        // callback($.map(dict,function(keyWord) {
+            // console.log(dict[index]);
+            // console.log(dict);
+            // Object.keys(driversCounter)
             // return dict[index];
-            return dict[index];
+            // return word.indexOf(term) === 0 ? word : null;
+            // return dict[index];
             // $.map(this.words, function (word) {
             //     return word.indexOf(term) === 0 ? word : null;
             // }));
@@ -56,13 +79,13 @@
             // for(key in this.dict){
             //     return dict[key]=== 0 ? key : null;;
             // }
-        }));
+        // }));
+        // },
+        template: function (value) {
+            return '<p>' + value.key + '( '+value.value+' )' + '</p>';
         },
-        template: function (key ,value) {
-            return '<p>' + value + '</p>';
-        },
-        replace: function (key,value) {
-            return ':' + value + ': ';
+        replace: function (value) {
+            return ':' + value.value + ': ';
         },
         index: 1
     },

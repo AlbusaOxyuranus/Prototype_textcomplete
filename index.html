@@ -17,27 +17,51 @@
         <textarea id="textarea1"></textarea>
     </body>
     <script type="text/javascript">
-    var dictinary={
-        'hi':'hey!',
-        'key':'Keyssssss'
+   
+    var dict={
+                'hi':'hey!',
+                'ke':'Keyssssss'
+            };
+    function shortKey(key,value){
+        var self =this;
+        self.key=ke;
+        self.value=value;
     }
-    var keys = Object.keys( dictinary );
+
+    var arrays=[new shortKey('hi','Htedadsada'),new shortKey('fd','gvbsdbq3wf')]
+    // var keys = Object.keys( dictinary );
      $('textarea').textcomplete([
     { 
-        // emoji strategy
-        id: 'emoji',
+        // shortcut strategy
+        id: 'shortcut',
         match: /\B:([\-+\w]*)$/,
-        search: 
-        function (term, callback) {
-            console.log('fff');
-            callback(function (emoji) {
-                return dictinary[emoji]=== 0 ? emoji : null;
-            });
+        search:  function (term, callback) {
+        console.log('fff');
+        callback($.map(dict,function(key, index) {
+            console.log(dict[index]);
+            console.log(dict);
+            Object.keys(driversCounter)
+            // return dict[index];
+            return dict[index];
+            // $.map(this.words, function (word) {
+            //     return word.indexOf(term) === 0 ? word : null;
+            // }));
+            // function (shortcut) {
+            
+            //  var dict={
+            //     'hi':'hey!',
+            //     'key':'Keyssssss'
+            // };
+
+            // for(key in this.dict){
+            //     return dict[key]=== 0 ? key : null;;
+            // }
+        }));
         },
-        template: function (value) {
-            return '<p>' + value + '</p>' + value;
+        template: function (key ,value) {
+            return '<p>' + value + '</p>';
         },
-        replace: function (value) {
+        replace: function (key,value) {
             return ':' + value + ': ';
         },
         index: 1

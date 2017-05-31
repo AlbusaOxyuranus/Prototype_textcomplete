@@ -8,6 +8,7 @@
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="bower_components/jquery-textcomplete/dist/jquery.textcomplete.js"></script>
+    <!--<script type="text/javascript" src="bower_components/jquery-textcomplete/dist/jquery.textcomplete.min.js"></script>-->
     <script type="text/javascript" scr="bower_components/emoji/lib/emoji.js"></script>
     <head>
         <title>My Test</title>
@@ -18,17 +19,25 @@
     </body>
     <script type="text/javascript">
    
-    var dict={
-                'hi':'hey!',
-                'ke':'Keyssssss'
-            };
     function shortKey(key,value){
         var self =this;
         self.key=key;
         self.value=value;
     }
 
-    var arrays=[new shortKey('hi','Htedadsada'),new shortKey('fd','gvbsdbq3wf')]
+    var arrays=[
+
+        new shortKey('ahi','Hello! My name is Denis!'),
+        new shortKey('vfd','gvbsdbq3wfKeyssssss\ndsads'),
+        new shortKey('chi','Hello! My name is Denis!'),
+        new shortKey('d5fd','gvbsdbq3wfKeyssssss\ndsads'),
+        new shortKey('f43hi','Hello! My name is Denis!'),
+        new shortKey('gahi','Hello! My name is Denis!'),
+        new shortKey('kvfd','gvbsdbq3wfKeyssssss\ndsads'),
+        new shortKey('lchi','Hello! My name is Denis!'),
+        new shortKey('md5fd','gvbsdbq3wfKeyssssss\ndsads'),
+        new shortKey('nf43hi','Hello! My name is Denis!')
+        ]
     // var keys = Object.keys( dictinary );
      $('textarea').textcomplete([
     { 
@@ -39,70 +48,18 @@
         console.log('fff');
         callback(
             $.grep(arrays, function(el){ 
-                console.log(el.key);
-                console.log(term);
                return el.key.indexOf(term) === 0 ? el : null
-                // if(term==null)
-                // {
-                //     return el.key;
-                // }
-                // else{
-                //        return el.key===tern;
-                //     }
-               
-                // return e.key==term;
-            // $.map(shortKey, function (word,index) {
-            // //return shortKey.
-            // console.log(shortKey[index]);
-            // console.log(shortKey.indexOf(word).key);
-            // console.log(word.key);
-            // return shortKey.indexOf(word) === term ? word : null;
         }));
         },
-        // callback($.map(dict,function(keyWord) {
-            // console.log(dict[index]);
-            // console.log(dict);
-            // Object.keys(driversCounter)
-            // return dict[index];
-            // return word.indexOf(term) === 0 ? word : null;
-            // return dict[index];
-            // $.map(this.words, function (word) {
-            //     return word.indexOf(term) === 0 ? word : null;
-            // }));
-            // function (shortcut) {
-            
-            //  var dict={
-            //     'hi':'hey!',
-            //     'key':'Keyssssss'
-            // };
-
-            // for(key in this.dict){
-            //     return dict[key]=== 0 ? key : null;;
-            // }
-        // }));
-        // },
+    
         template: function (value) {
-            return '<p>' + value.key + '( '+value.value+' )' + '</p>';
+            return '<p>' + value.key + ' ( '+ value.value +' )' + '</p>';
         },
         replace: function (value) {
-            return ':' + value.value + ': ';
+            return value.value ;
         },
         index: 1
     },
-    // { // tech companies
-    //     id: 'tech-companies',
-    //     words: ['apple', 'google', 'facebook', 'github'],
-    //     match: /\b(\w{2,})$/,
-    //     search: function (term, callback) {
-    //         callback($.map(this.words, function (word) {
-    //             return word.indexOf(term) === 0 ? word : null;
-    //         }));
-    //     },
-    //     index: 1,
-    //     replace: function (word) {
-    //         return word + ' ';
-    //     }
-    // }
 ], {
     onKeydown: function (e, commands) {
         if (e.ctrlKey && e.keyCode === 74) { // CTRL-J

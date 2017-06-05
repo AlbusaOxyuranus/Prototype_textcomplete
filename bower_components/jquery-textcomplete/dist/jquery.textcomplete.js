@@ -326,6 +326,8 @@ if (typeof jQuery === 'undefined') {
           self.dropdown.clear();
           self._clearAtNext = false;
         }
+        //self.adapter.getCaretPosition(new position());
+        //self.adapter.getCaretPosition().top=self.adapter.getCaretPosition().top-100;
         self.dropdown.setPosition(self.adapter.getCaretPosition());
         self.dropdown.render(self._zip(data, strategy, term));
         if (!stillSearching) {
@@ -1096,7 +1098,7 @@ if (typeof jQuery === 'undefined') {
     _getCaretRelativePosition: function () {
       var p = $.fn.textcomplete.getCaretCoordinates(this.el, this.el.selectionStart);
       return {
-        top: p.top + this._calculateLineHeight() - this.$el.scrollTop(),
+        top: -200,//p.top + this._calculateLineHeight() - this.$el.scrollTop(),
         left: p.left - this.$el.scrollLeft(),
         lineHeight: this._calculateLineHeight()
       };
